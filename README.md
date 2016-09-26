@@ -1,5 +1,6 @@
 # How-to-Add-trusted-root-certificates
-How-to: Adding trusted root certificates to the SO (Win / MAC / Unix)
+How-to: Adding trusted root certificates to the SO (Win / MAC / Unix).
+###### Feel totally free to edit this page to add another operating systems!
 
 ## Mac OS X
 
