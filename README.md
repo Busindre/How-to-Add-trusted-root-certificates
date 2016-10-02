@@ -2,6 +2,11 @@
 How-to: Adding trusted root certificates to the SO (Win / MAC / Unix).
 ###### Feel totally free to edit this page to add another operating systems!
 
+##### List all available ssl CA certificates in Linux.
+```
+awk -v cmd='openssl x509 -noout -subject' ' /BEGIN/{close(cmd)};{print | cmd}' < /etc/ssl/certs/ca-certificates.crt
+```
+
 ## Mac OS X
 
 ### Add
