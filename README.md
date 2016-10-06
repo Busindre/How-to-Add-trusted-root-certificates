@@ -42,7 +42,7 @@ certutil -delstore "ROOT" serial-number-hex
 
 ---
 
-## Linux Ubuntu, Debian, Arch
+## Ubuntu, Debian, Arch
 
 ### Add
 Copy your CA to dir /usr/local/share/ca-certificates/
@@ -77,7 +77,7 @@ sudo update-ca-certificates
 
 ---
 
-## Linux CentOs 6
+## CentOs > 6.X
 
 ### Add
 Install the ca-certificates package:
@@ -96,7 +96,7 @@ update-ca-trust extract
 
 ---
 
-## Linux (CentOs 5)
+## CentOs < 5.X
 
 ### Add
 Append your trusted certificate to file /etc/pki/tls/certs/ca-bundle.crt
