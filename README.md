@@ -4,7 +4,14 @@ How-to: Adding trusted root certificates to the SO (Win / MAC / Unix).
 
 ##### How-to list all available ssl CA certificates in Linux.
 ```
+# Arch , Debian, Ubuntu
 awk -v cmd='openssl x509 -noout -subject' ' /BEGIN/{close(cmd)};{print | cmd}' < /etc/ssl/certs/ca-certificates.crt
+
+# Red-Hat, Fedora, CentOS
+awk -v cmd='openssl x509 -noout -subject' ' /BEGIN/{close(cmd)};{print | cmd}' < /etc/ssl/certs/ca-bundle.crt
+
+# Centos 5
+awk -v cmd='openssl x509 -noout -subject' ' /BEGIN/{close(cmd)};{print | cmd}' /etc/pki/tls/certs/ca-bundle.crt
 ```
 ---
 
@@ -35,7 +42,7 @@ certutil -delstore "ROOT" serial-number-hex
 
 ---
 
-## Linux Ubuntu, Debian
+## Linux Ubuntu, Debian, Arch
 
 ### Add
 Copy your CA to dir /usr/local/share/ca-certificates/
@@ -52,6 +59,20 @@ sudo update-ca-certificates
 Remove your CA (/usr/local/share/ca-certificates/)
 ```
 sudo update-ca-certificates --fresh
+```
+
+---
+
+## Suse 
+
+### Add
+Copy your CA to dir /etc/pki/trust/anchors/
+```
+sudo cp foo.crt /etc/pki/trust/anchors/foo.crt
+```
+Update the CA store:
+```
+sudo update-ca-certificates
 ```
 
 ---
@@ -82,3 +103,16 @@ Append your trusted certificate to file /etc/pki/tls/certs/ca-bundle.crt
 ```
 cat foo.crt >> /etc/pki/tls/certs/ca-bundle.crt
 ```
+
+---
+
+## Firefox Browser
+Firefox has its own certificate store.
+```
+Firefox Options -> Advanced -> Certificates
+```
+
+---
+
+## Links of interest​ (Acrobat, Android, etc)
+How can I trust CAcert's root certificate?: http://wiki.cacert.org/FAQ/ImportRootCert
