@@ -106,6 +106,40 @@ cat foo.crt >> /etc/pki/tls/certs/ca-bundle.crt
 
 ---
 
+## Solaris
+
+Solaris-specific Solaris keeps the CA certs in "/etc/certs/CA/".
+Hashed links to the CA certs are in "/etc/openssl/certs/" for fast lookup and access (usually by OpenSSL). 
+
+By convention, but not required, the filenames in "/etc/certs/CA" is the cert holder's CN with spaces replaced by underscores ("_") and appended with a .pem file name extension. For example, file "/etc/certs/CA/foo.pem" contains the cert for CN "VeriSign Class 4 Public Primary Certification Authority - G3".
+
+### Add
+
+Make or verify the cert is world-readable, if not already.
+```
+chmod a+r foo.pem; ls -l foo.pem
+```
+
+Copy the cert to directory "/etc/certs/CA".
+```
+cp -p foo.pem /etc/certs/CA/
+```
+
+Install he cert into "/etc/certs/ca-certificates.crt" and add a hashed link in "/etc/openssl/certs/".
+```
+/usr/sbin/svcadm restart /system/ca-certificates
+```
+
+### Verify
+
+Verify the CA cert service has restarted (and processed your new CA cert).
+```
+/usr/sbin/svcs /system/ca-certificates
+```
+If the service hasn't started it could be the cert is corrupt or is a duplicate of an existing CA cert. Look for error messages in files "/var/svc/log/system-ca-certificates:default.log" and "/system/volatile/system-ca-certificates:default.log"
+
+---
+
 ## Firefox Browser
 Firefox has its own certificate store.
 ```
