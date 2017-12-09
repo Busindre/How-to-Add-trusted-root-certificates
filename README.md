@@ -146,6 +146,8 @@ Firefox has its own certificate store.
 Firefox Options -> Advanced -> Certificates
 ```
 
+---
+
 ## JVM / Java Keystore
 Java uses the popular "Java KeyStore (JKS)", it does not use the trusted-root-certificates of the operating system.
 ```
