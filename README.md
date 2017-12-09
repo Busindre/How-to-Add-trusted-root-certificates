@@ -1,5 +1,7 @@
-# How-to-Add-trusted-root-certificates
+# How to add trusted Root-Certificates
+
 How-to: Adding trusted root certificates to the SO (Win / MAC / Unix).
+
 ###### Feel totally free to edit this page to add another operating systems!
 
 ##### How-to list all available ssl CA certificates in Linux.
