@@ -19,6 +19,8 @@ awk -v cmd='openssl x509 -noout -subject' ' /BEGIN/{close(cmd)};{print | cmd}' <
 
 ## Mac OS X
 
+Double click on the certificate is usually enough. It can be done from the console too.
+
 ### Add
 ```
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ~/new-root-certificate.crt
