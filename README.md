@@ -48,7 +48,7 @@ certutil -delstore "ROOT" serial-number-hex
 
 ## Ubuntu, Debian, Arch
 
-### Add
+### Add (Option 1)
 Copy your CA to dir /usr/local/share/ca-certificates/
 ```
 sudo cp foo.crt /usr/local/share/ca-certificates/foo.crt
@@ -56,6 +56,16 @@ sudo cp foo.crt /usr/local/share/ca-certificates/foo.crt
 Update the CA store:
 ```
 sudo update-ca-certificates
+```
+### Add (Option 2)
+Copy your CA to dir /etc/ca-certificates/trust-source/anchors/
+```
+cp foo.crt /etc/ca-certificates/trust-source/anchors/
+# Alternatice Dir: /usr/share/ca-certificates/trust-source/anchors/
+```
+Update the CA store:
+```
+update-ca-trust
 ```
 
 ### Remove
