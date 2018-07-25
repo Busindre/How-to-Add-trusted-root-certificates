@@ -51,7 +51,7 @@ certutil -delstore "ROOT" serial-number-hex
 ### Add (Option 1)
 Copy your CA to dir /usr/local/share/ca-certificates/
 ```bash
-sudo cp foo.crt /usr/local/share/ca-certificates/foo.crt   # Opiton 1.
+sudo cp foo.crt /usr/local/share/ca-certificates/foo.crt   # Option 1.
 sudo cp foo.crt /usr/share/ca-certificates/foo.crt         # Option 2.
 ```
 Update the CA store:
